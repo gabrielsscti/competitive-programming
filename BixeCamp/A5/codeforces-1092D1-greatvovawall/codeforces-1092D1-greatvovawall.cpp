@@ -6,25 +6,18 @@ long long int a[200100];
 
 int main(){
 	cin >> n;
-	bool isAlreadyCompleted=false;
 	for(int i=0; i<n; i++){
 		cin >> a[i];
-		if(i!=0)
-			if(a[i]!=a[i-1])
-				isAlreadyCompleted = false;
+		a[i] &= 1;
 	}
-	if(!isAlreadyCompleted){
-		for(int i=0; i<n; i++){
-			if(i!=n-1){
-				while(a[i]<a[i+1])
-					a[i]+=2;
-				while(a[i]==a[i+1]
-			}
-		
+	vector<int> st;
+	for(int i=0; i<n; i++){
+		if(!st.empty() && a[i]==st.back()){
+			st.pop_back();
+		}else{
+			st.push_back(a[i]);
+
 		}
-	}else
-		cout << "YES" << endl;
-
-
-
+	}
+	cout << (st.size() <= 1 ? "YES" : "NO") << endl;
 }
