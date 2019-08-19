@@ -6,8 +6,6 @@ int branchSize[100100];
 vector<int> adj[100100];
 vector<int> pathLength;
 
-
-
 int getBranchSize(int x){
     if(branchSize[x]!=-1)
         return branchSize[x];
