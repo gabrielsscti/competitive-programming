@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define MAX 1010
 #define INF 0x3f3f3f3f
-#define debug(x) cout << #x << ": " << x;
+#define debug(x) cout << #x << ": " << x << endl;
 using namespace std;
 
 typedef struct _caixa_{
@@ -12,8 +12,8 @@ bool compara(Caixa c1, Caixa c2){
     return c1.resistencia>c2.resistencia;
 }
 
-int dp[1010][1010];
 int n;
+int dp[1010][1010];
 Caixa caixas[1010];
 
 int solve(int id, int h){
@@ -41,7 +41,12 @@ int main(){
         solve(n-1, i);
 
     int r = 0;
-
+    for(int i=0; i<n; i++){
+        for(int j=0; j<=n; j++){
+            cout << dp[i][j] << "\t";
+        }
+        cout << endl;
+    }
     for(int i=0; i<n; i++){
         int temp = 0;
         for(int j=1; j<=n; j++){
