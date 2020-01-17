@@ -1,0 +1,16 @@
+[2020-01-17 10:55:13.890] [exthost] [info] extension host started
+[2020-01-17 10:55:13.909] [exthost] [info] ExtensionService#_doActivateExtension austin.code-gnu-global {"startup":false,"extensionId":{"value":"austin.code-gnu-global","_lower":"austin.code-gnu-global"},"activationEvent":"onLanguage:cpp"}
+[2020-01-17 10:55:13.909] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/austin.code-gnu-global-0.2.2/out/src/extension
+[2020-01-17 10:55:13.963] [exthost] [info] ExtensionService#_doActivateExtension ms-vscode.cpptools {"startup":false,"extensionId":{"value":"ms-vscode.cpptools","_lower":"ms-vscode.cpptools"},"activationEvent":"onLanguage:cpp"}
+[2020-01-17 10:55:13.964] [exthost] [info] ExtensionService#loadCommonJSModule file:///root/.vscode/extensions/ms-vscode.cpptools-0.26.2/dist/main
+[2020-01-17 10:55:14.073] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"extensionId":{"value":"vscode.debug-auto-launch","_lower":"vscode.debug-auto-launch"},"activationEvent":"*"}
+[2020-01-17 10:55:14.073] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/22/usr/share/code/resources/app/extensions/debug-auto-launch/dist/extension
+[2020-01-17 10:55:14.074] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"extensionId":{"value":"vscode.emmet","_lower":"vscode.emmet"},"activationEvent":"*"}
+[2020-01-17 10:55:14.074] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/22/usr/share/code/resources/app/extensions/emmet/dist/extension
+[2020-01-17 10:55:14.088] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"extensionId":{"value":"vscode.git","_lower":"vscode.git"},"activationEvent":"*"}
+[2020-01-17 10:55:14.089] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/22/usr/share/code/resources/app/extensions/git/dist/main
+[2020-01-17 10:55:14.107] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"extensionId":{"value":"vscode.merge-conflict","_lower":"vscode.merge-conflict"},"activationEvent":"*"}
+[2020-01-17 10:55:14.107] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/22/usr/share/code/resources/app/extensions/merge-conflict/dist/extension
+[2020-01-17 10:55:14.109] [exthost] [info] ExtensionService#_doActivateExtension vscode.search-result {"startup":true,"extensionId":{"value":"vscode.search-result","_lower":"vscode.search-result"},"activationEvent":"*"}
+[2020-01-17 10:55:14.109] [exthost] [info] ExtensionService#loadCommonJSModule file:///snap/code/22/usr/share/code/resources/app/extensions/search-result/dist/extension.js
+[2020-01-17 10:55:14.305] [exthost] [info] eager extensions activated
