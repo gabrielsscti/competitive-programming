@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 #define MAX 100000
 
-int m;
+int m, r;
 int v[MAX];
 
 using namespace std;
 
-pair<int, int*> solve(int *v){
+int *solve(int *v){
     vector<int> stacks;
+    int *res = (int*)malloc(sizeof(int)*m);
     int pos[MAX], pai[MAX];
     for(int i=0; i<m; i++){
         auto it = lower_bound(stacks.begin(), stacks.end(), v[i]);
@@ -23,19 +24,38 @@ pair<int, int*> solve(int *v){
         if(!actStack)
             pai[i] = -1;
         else
-            pai[i] = stacks[actStack-1];
-         
+            pai[i] = pos[actStack-1];
     }
-    pair<int, int*> r = {stacks.size(), pos};
-    return r;
+    for(int i=0; i<m; i++){
+        int temp = pai[i];
+        int r = 1;
+        while(temp>=0){
+            r++;
+            temp = pai[temp];
+        }
+        res[i] = r;
+    }
+    return res;
+    
 }
 
 int main(){
     cin >> m;
     for(int i=0; i<m; i++)
         cin >> v[i];
-    pair<int, int*> ans = solve(v);
-    int r = 1;
+    int *incSeq = solve(v);
+    reverse(v, v+m);
+    int *decSeq = solve(v);
+    reverse(decSeq, decSeq+m);
+    // for(int i=0; i<m; i++)
+    //     cout << incSeq[i] << "\t";
+    // cout << endl;
+    // for(int i=0; i<m; i++)
+    //     cout << decSeq[i] << "\t";
+    // cout << endl;
+    for(int i=0; i<m; i++)
+        r = max(r, min(incSeq[i], decSeq[i]));
+    cout << 2*(r-1)+1 << endl;
     
     
 }
