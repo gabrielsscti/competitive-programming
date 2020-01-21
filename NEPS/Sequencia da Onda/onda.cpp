@@ -47,12 +47,6 @@ int main(){
     reverse(v, v+m);
     int *decSeq = solve(v);
     reverse(decSeq, decSeq+m);
-    // for(int i=0; i<m; i++)
-    //     cout << incSeq[i] << "\t";
-    // cout << endl;
-    // for(int i=0; i<m; i++)
-    //     cout << decSeq[i] << "\t";
-    // cout << endl;
     for(int i=0; i<m; i++)
         r = max(r, min(incSeq[i], decSeq[i]));
     cout << 2*(r-1)+1 << endl;
