@@ -30,7 +30,7 @@ lli solve(lli *vIni, lli *vFim){
     v1[half1] = INT64_MIN;
     v2[half2] = INT64_MIN;
     int ini1=0, ini2=0;
-    //8
+    
     for(int i=0; i<vSize; i++){
         if(v1[ini1]>v2[ini2])
             vIni[i] = v1[ini1++];
