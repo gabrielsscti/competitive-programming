@@ -9,64 +9,54 @@ Site: http://github.com/gabrielsscti
 
 using namespace std;
 
-typedef long long int lli;
-
-typedef struct _caminho_{
-    int dest, pesoAresta, paridade;
-    bool operator<(const _caminho_& rhs) const{
-        return pesoAresta<rhs.pesoAresta;
-    }
-}Caminho;
-
-vector<Caminho> adj[MAX];
+vector<pair<int, int>> adj[MAX];
 bool visited[2][MAX];
-lli dist[2][MAX];
+int result[2][MAX];
 int c, v;
 
-lli solve(int n){
-    dist[0][n] = 0;
-    priority_queue<Caminho> frontier;
-    frontier.push({n, 0, 0});
-    while(true){
-        int actNode = -1, actParidade = 0, nextParidade = 0;
-        while(!frontier.empty()){
-            Caminho tempCaminho = frontier.top();
-            frontier.pop();
-            if(!visited[tempCaminho.paridade][tempCaminho.dest]){
-                actNode = tempCaminho.dest;
-                actParidade = tempCaminho.paridade;
-                nextParidade = (actParidade+1)%2;
-                break;
-            }
-        }
-        if(actNode==-1)
-            break;
-        visited[actParidade][actNode] = true;
-        for(int i=0; i<adj[actNode].size(); i++){
-            int actDist = adj[actNode][i].pesoAresta;
-            int actDest = adj[actNode][i].dest;
-            if(dist[nextParidade][actDest]>dist[actParidade][actNode]+actDist){
-                dist[nextParidade][actDest] = dist[actParidade][actNode]+actDist;
-                frontier.push({actDest, actDist, nextParidade});
+typedef struct _frontiernode_{
+    int to, distance, parity;
+    bool operator<(const _frontiernode_& rhs) const{
+        return distance>rhs.distance;
+    }
+}FrontierNode;
+
+int solve(int from, int to){
+    priority_queue<FrontierNode> frontier;
+    frontier.push({from, 0, 0});
+    result[0][from] = 0;
+    while(!frontier.empty()){
+        FrontierNode actNode = frontier.top();
+        frontier.pop();
+        int to=actNode.to, distance=actNode.distance, parity=actNode.parity;
+        bool *actVisited = &visited[parity][to];
+        if(!(*actVisited)){
+            *actVisited = true;
+            for(pair<int, int> ngbr : adj[to]){
+                int newParity = (parity+1)%2;
+                int newDistance = distance + ngbr.second;
+                int *actDistance = &result[newParity][ngbr.first];
+                if(newDistance < *actDistance){
+                    *actDistance = newDistance;
+                    frontier.push({ngbr.first, *actDistance, newParity});
+                }
             }
         }
     }
-    return (dist[0][c-1]==INT64_MAX ? -1 : dist[0][c-1]);
+    return (result[0][to]==INT32_MAX ? -1 : result[0][to]);
 }
 
 int main(){
-    for(int i=0; i<2; i++){
-        for(int j=0; j<MAX; j++){
-            dist[i][j] = INT64_MAX;
-        }
-    }
+    for(int i=0; i<2; i++)
+        for(int j=0; j<MAX; j++)
+            result[i][j] = INT32_MAX;
     cin >> c >> v;
     for(int i=0; i<v; i++){
-        int c1, c2, g;
-        cin >> c1 >> c2 >> g;
-        c1--, c2--;
-        adj[c1].push_back({c2, g, 0});
-        adj[c2].push_back({c1, g, 0});
+        int from, to, dist;
+        cin >> from >> to >> dist;
+        adj[from].push_back(make_pair(to, dist));
+        adj[to].push_back(make_pair(from, dist));
+
     }
-    cout << solve(0) << endl;
+    cout << solve(1, c) << endl;
 }
